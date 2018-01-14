@@ -14,6 +14,12 @@
 
 <?= $this->formRow($form->get('dateFin')) ?><br>
 
+<?php    
+	if (isset($error_date_logic)) {
+    	echo "<ul><li>".$error_date_logic."</li></ul><br>";
+    } 
+?>
+
 <?= $this->formInput($form->get('submit')) ?>
 
 <?= $this->form()->closeTag($form); ?>

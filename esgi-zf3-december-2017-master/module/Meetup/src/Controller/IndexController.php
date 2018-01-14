@@ -55,7 +55,7 @@ final class IndexController extends AbstractActionController
                 if(!$this->checkDate($meetup['dateDebut'], $meetup['dateFin'])){
                     return new ViewModel([
                         'form' => $form,
-                        'error_date_logic' => 'Not logical date.'
+                        'error_date_logic' => 'Start date is greater than end.'
                     ]);
                 }
                 $meetup = $this->meetupRepository->createMeetupFromNameAndDescription($meetup['title'], $meetup['description'], $meetup['dateDebut'], $meetup['dateFin']);
@@ -94,6 +94,12 @@ final class IndexController extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $data = $form->getData();
+                if(!$this->checkDate($data->getDateDebut(), $data->getDateFin())){
+                    return new ViewModel([
+                        'form' => $form,
+                        'error_date_logic' => 'Start date is greater than end.'
+                    ]);
+                }
                 $meetup->setTitle($data->getTitle());
                 $meetup->setDescription($data->getDescription());
                 $this->meetupRepository->update($data);
