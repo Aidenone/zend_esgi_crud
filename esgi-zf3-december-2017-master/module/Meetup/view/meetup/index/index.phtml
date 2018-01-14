@@ -1,0 +1,10 @@
+<h1>Meetups</h1>
+
+<ul>
+    <?php $i = 0;
+    foreach ($this->meetups as $meetup): ?>
+    <li><a href="meetups/update/<?php echo $meetup->getId(); ?>"><?= $meetup->getTitle() ?></a> <a style="color: red;" href="meetups/delete/<?php echo $meetup->getId(); ?>">X</a></li>
+    <?php endforeach; ?>
+</ul>
+
+<a href="<?= $this->url('meetups/add'); ?>" class="btn btn-primary">Add new</a>

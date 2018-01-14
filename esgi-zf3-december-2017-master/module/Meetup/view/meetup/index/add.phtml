@@ -1,0 +1,25 @@
+<h1>Add a meetup</h1>
+
+<?php
+    $form = $this->form; /* @var $form \Zend\Form\Form */
+?>
+
+<?= $this->form()->openTag($form); ?>
+
+<?= $this->formRow($form->get('title')) ?><br>
+
+<?= $this->formRow($form->get('description')) ?><br>
+
+<?= $this->formRow($form->get('dateDebut')) ?><br>
+
+<?= $this->formRow($form->get('dateFin')) ?><br>
+
+<?php    
+	if (isset($error_date_logic)) {
+    	echo $error_date_logic."<br>";
+    } 
+?>
+
+<?= $this->formInput($form->get('submit')) ?>
+
+<?= $this->form()->closeTag($form); ?>
